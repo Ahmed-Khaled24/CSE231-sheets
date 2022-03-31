@@ -38,7 +38,7 @@ public class Vector {
     }
 
     public double angle(){
-        return Math.tan(y/x);
+        return Math.toDegrees(Math.atan(y/x));
     }
 
     public void print(){
