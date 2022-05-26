@@ -3,7 +3,7 @@ package Sheet5.Problem4;
 import Sheet5.Problem2.GeometricShape;
 import javafx.geometry.Point2D;
 
-public class Diamond  extends GeometricShape implements Movable, Comparable {
+public class Diamond  extends GeometricShape implements Movable, Comparable<Diamond> {
     private double length, width;
     public Diamond(Point2D start, double length, double width){
         super(start);
@@ -49,18 +49,15 @@ public class Diamond  extends GeometricShape implements Movable, Comparable {
 
 
     @Override
-    public int compareTo(Object other) {
-        if(other instanceof Diamond otherDiamond){
-            double thisDiamondArea = getArea(),
-                   otherDiamondArea = otherDiamond.getArea();
-            if(thisDiamondArea == otherDiamondArea)
-                return 0;
-            else if (thisDiamondArea < otherDiamondArea)
-                return -1;
-            else
-                return 1;
-        }
+    public int compareTo(Diamond otherDiamond) {
+        double thisDiamondArea = getArea(),
+               otherDiamondArea = otherDiamond.getArea();
+        if(thisDiamondArea == otherDiamondArea)
+            return 0;
+        else if (thisDiamondArea < otherDiamondArea)
+            return -1;
         else
-            throw (new NullPointerException("Comparing with Null"));
+            return 1;
     }
+
 }
